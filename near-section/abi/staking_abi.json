@@ -1,0 +1,119 @@
+{
+  "schema_version": "0.3.0",
+  "metadata": {
+    "name": "staking",
+    "version": "0.1.0",
+    "build": {
+      "compiler": "rustc 1.66.0",
+      "builder": "cargo-near 0.3.0"
+    },
+    "wasm_hash": "4GcNtm7h89PWTPPsqe21K6WJvL3xakDQNNwxNMwDMWG2"
+  },
+  "body": {
+    "functions": [
+      {
+        "name": "new",
+        "kind": "call",
+        "modifiers": [
+          "init"
+        ],
+        "params": {
+          "serialization_type": "json",
+          "args": [
+            {
+              "name": "account",
+              "type_schema": {
+                "$ref": "#/definitions/AccountId"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "stake",
+        "kind": "call",
+        "params": {
+          "serialization_type": "json",
+          "args": [
+            {
+              "name": "beneficiary",
+              "type_schema": {
+                "$ref": "#/definitions/AccountId"
+              }
+            },
+            {
+              "name": "validator",
+              "type_schema": {
+                "$ref": "#/definitions/AccountId"
+              }
+            },
+            {
+              "name": "amount",
+              "type_schema": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "view_stake",
+        "kind": "call",
+        "params": {
+          "serialization_type": "json",
+          "args": [
+            {
+              "name": "account",
+              "type_schema": {
+                "$ref": "#/definitions/AccountId"
+              }
+            },
+            {
+              "name": "validator",
+              "type_schema": {
+                "$ref": "#/definitions/AccountId"
+              }
+            }
+          ]
+        },
+        "result": {
+          "serialization_type": "json",
+          "type_schema": {
+            "type": "string"
+          }
+        }
+      },
+      {
+        "name": "withdraw_stake",
+        "kind": "call",
+        "params": {
+          "serialization_type": "json",
+          "args": [
+            {
+              "name": "amount",
+              "type_schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "validator",
+              "type_schema": {
+                "$ref": "#/definitions/AccountId"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "root_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "String",
+      "type": "string",
+      "definitions": {
+        "AccountId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

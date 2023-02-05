@@ -1,0 +1,36 @@
+[package]
+name = "near-pocs"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = [
+    "contracts/race-condition/*",
+    "contracts/access-control/*",
+    "contracts/denial-of-service/",
+    "contracts/logical/",
+]
+
+
+[profile.release]
+codegen-units = 1
+# Tell `rustc` to optimize for small code size.
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+# Opt into extra safety checks on arithmetic operations https://stackoverflow.com/a/64136471/249801
+overflow-checks = true
+
+[dev-dependencies]
+workspaces = { version = "0.7.0" }
+serde_json = { version = "1.0.87", features = ["arbitrary_precision"] }
+tokio = { version = "1.21.2", features = ["full"] }
+anyhow = "1.0.66"
+serde = "1.0.147"
+serde_with = "2.0.1"
+tracing = "0.1.37"
+borsh = "0.9.3"
+near-units = "0.2.0"
+near-sdk = { version = "4.1.1", features = ["abi"] }
+near-abi-client = { git = "https://github.com/near/near-abi-client-rs" }
